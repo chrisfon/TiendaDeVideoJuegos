@@ -17,7 +17,7 @@ public class Juego {
  private int idJuego;
  private int cantidadJuego;
  private int precioJuego; 
-
+// <editor-fold desc="Constructor, getter and setter"> 
     public Juego(String tituloJuego, int idJuego, int precioJuego) {
         this.tituloJuego = tituloJuego;
        
@@ -81,7 +81,7 @@ public class Juego {
     public void setPrecioJuego(int precioJuego) {
         this.precioJuego = precioJuego;
     }
-
+   // </editor-fold>
     @Override
     public String toString() {
         return "Titulo:" + tituloJuego + " Precio:"+precioJuego ;

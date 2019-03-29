@@ -12,7 +12,8 @@ package tiendajuegos;
 public class Carrito {
 private Juego juegoCarrito;
 private Usuario usuario;
-//NODO PARA ARRAY
+//Utilizar lista para agregar los juegos y admin
+// <editor-fold desc="Constructor, getter and setter"> 
     public Carrito(Juego juego, Usuario usuario) {
         this.juegoCarrito = juego;
         this.usuario = usuario;
@@ -34,6 +35,7 @@ private Usuario usuario;
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
+     // </editor-fold>
 
 public void Agregar(){
     //se va a usar array
