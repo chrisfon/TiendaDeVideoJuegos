@@ -17,8 +17,7 @@ public class TiendaJuegos {
     public static void main(String[] args) {
         // TODO code application logic here
         Control c = new Control ();
-        c.agregarJuego(new Juego("TETRIS",1 , 6000));
-        System.out.print(c);
+        c.menuLogin();
     }
     // <editor-fold desc="Informacion"> 
     /*

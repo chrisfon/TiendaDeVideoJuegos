@@ -12,11 +12,13 @@ package tiendajuegos;
 public class NodoPila {
  private NodoPila abajo;
  private int idPila;
- //private ORDEN?USUARIO?JUEGO? dato;
+ private Orden orden;
 
-    public NodoPila() {
-        //this.dato = dato;
+    public NodoPila(Orden orden) {
+        this.orden = orden;
     }
+
+    
 
  
     public NodoPila getAbajo() {
@@ -33,6 +35,19 @@ public class NodoPila {
 
     public void setIdPila(int idPila) {
         this.idPila = idPila;
+    }
+
+    public Orden getOrden() {
+        return orden;
+    }
+
+    public void setOrden(Orden orden) {
+        this.orden = orden;
+    }
+
+    @Override
+    public String toString() {
+        return "" + orden;
     }
  
 }

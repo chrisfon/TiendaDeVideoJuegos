@@ -5,96 +5,146 @@
  */
 package tiendajuegos;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author ulacit
  */
 public class Control {
- private Usuario usuarioControl;
- private Juego juegoControl;
- private Orden ordenControl;
- private NodoLista cabezaLista;
- private NodoLista ultimoLista;
- // <editor-fold desc="Metodos para agregar y extraer juegos"> 
- public void agregarJuego(Juego j){
-      if (cabezaLista == null){
-           cabezaLista = new NodoLista(j);
-           ultimoLista = cabezaLista;
-           ultimoLista.setNext(cabezaLista);
-            cabezaLista.setBack(ultimoLista);
-           
-       }else if (j.getIdJuego() < cabezaLista.getDato().getIdJuego()){
-         NodoLista aux = new NodoLista(j);
-         aux.setNext(cabezaLista);
-         cabezaLista.setBack(aux);
-         cabezaLista = aux;
-         ultimoLista.setNext(cabezaLista);
-         cabezaLista.setBack(ultimoLista);
-         
-       }else if (ultimoLista.getDato().getIdJuego() <= j.getIdJuego()){
-        NodoLista aux = new NodoLista(j);
-        aux.setBack(ultimoLista);
-        ultimoLista.setNext(aux);
-        ultimoLista = ultimoLista.getNext();
-        ultimoLista.setNext(cabezaLista);
-        cabezaLista.setBack(ultimoLista);
+ private Lista listaJuego = new Lista();
+ private Lista listaUsuario = new Lista();
+ private Pilas orden = new Pilas();
+ private Juego juego1 = new Juego("El mejor juego x2 Electric Boogaloo","Desarollador 2","Estrategia","Un juegaso 12/10",2,2,2000);
+    public Lista getListaJuego() {
+     System.out.print(listaJuego);
+       
+        return listaJuego;
+    }
+
+    public void menuCarrito() {
+      System.out.print(orden);
+      System.out.print("\n MONTO TOTAL DE LA ORDEN:"+orden.montoTotal()+"\n"+"\n");
+      
+      int option = Integer.parseInt(JOptionPane.showInputDialog("Ingrese 1. para eliminar ultimo juego agregado (el mas arriba) o 0. para devolverse"));
+      if (option == 0){
+       menuUsuario();   
+      }else if (option == 1){
+          orden.pop();
+          System.out.print("Elimino exitosamente! El carrito ahora tiene: ");
+          menuCarrito();
+      }else{
+          System.out.print("Opcion invalida");
+      }
         
-       }else{
-       NodoLista aux = cabezaLista;
-       while (aux.getNext().getDato().getIdJuego() < j.getIdJuego()){
-           aux = aux.getNext();
-       }
-       NodoLista temp = new NodoLista(j);
-       temp.setNext(aux.getNext());
-       temp.setBack(aux);
-       aux.setNext(temp);
-       temp.getNext().setBack(temp);
-       } 
- }
- @Override
-    public String toString() {
-        String s="";
-       NodoLista aux= cabezaLista;
-        if (cabezaLista!=null) {
-            s+=aux+",";
-            aux=aux.getNext();
-            while(aux!=cabezaLista){
-                s+=aux +",";
-                aux= aux.getNext();
-            }
-        }
-        return s;
+    }
+
+    public void setOrden(Pilas orden) {
+        this.orden = orden;
     }
     
-   public Juego extrae(int id){
-       Juego p=null;
-      if (cabezaLista!=null) {
-            if (id>=cabezaLista.getDato().getIdJuego() && id<=ultimoLista.getDato().getIdJuego()) {
-                if (cabezaLista.getDato().getIdJuego()==id) {
-                    p=cabezaLista.getDato();
-                    cabezaLista=cabezaLista.getNext();
-                    ultimoLista.setNext(cabezaLista);
-                }else{
-                     NodoLista aux=cabezaLista;               
-                while(aux.getNext()!=cabezaLista && aux.getNext().getDato().getIdJuego()<id){                
-               aux=aux.getNext();               
-                } 
-                if (aux.getNext().getDato().getIdJuego()==id) {
-                    p=aux.getNext().getDato();
-                    if (aux.getNext()== ultimoLista) {
-                        ultimoLista=aux;
-                    }
-                  aux.setNext(aux.getNext().getNext());
+    public Lista getListaUsuario() {
+        return listaUsuario;
+    }
+    
+    public void menuLogin (){
+        try{
+        llenarListasPRUEBA();
+        int option = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la accion a realizar: \n1.Registrarse\n2.Ingresar:\n3.Cerrar "));
+        switch (option){
+            case 1:
+                String nombreUsuario = JOptionPane.showInputDialog("Ingrese el nombre del usuario:");
+                String contrasenaUsuario = JOptionPane.showInputDialog("Ingrese la contrasena");
+                int edadUsuario = Integer.parseInt(JOptionPane.showInputDialog("Ingrese su edad"));
+                int idUsuario = Integer.parseInt(JOptionPane.showInputDialog("Ingrese su numero de cedula"));
+                this.listaUsuario.insertarUsuario(new Usuario (nombreUsuario, contrasenaUsuario,edadUsuario,idUsuario));
+                this.menuLogin();
+                break;
                 
+            case 2:
+                String nombreIngresado = JOptionPane.showInputDialog("Ingrese el nombre del usuario");
+                String contrasenaIngresado = JOptionPane.showInputDialog("Ingrese la contrasena");
+                Usuario usuario =this.listaUsuario.buscarUsuario(nombreIngresado, contrasenaIngresado); 
+                if (usuario!=null){
+                    this.listaUsuario.setUsuario(usuario);
+                    JOptionPane.showMessageDialog(null, "Bienvenido "+usuario.getNombreUsuario());
+                    menuUsuario();
+                }else{
+                    JOptionPane.showMessageDialog(null, "No se encontro referencias con los datos ingresados");
+                    this.menuLogin();
                 }
-                    
-                }               
-               
-            }
-            
+                break;
+            case 3:
+                System.exit(0);
+            default:
+                System.out.print("Esa opcion no existe\n");
+                menuLogin();
         }
-       System.out.println(p);
-    return p;
-   }
+        
+        
+    }catch (Exception e){
+       System.out.print("Parametro invalido\n");
+       menuLogin();
+    }
+    }
+public void menuUsuario(){
+ try{
+    System.out.print("1. Ver juegos\n"
+         + "2. Ver carrito\n"
+         + "3. Buscar juego (sort)\n"
+         + "4. Finalizar Orden\n"
+         + "0.Salir\n");   
+ int option = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la accion a realizar"));
+ switch(option){
+     case 0:
+         System.exit(0);
+     case 1:
+     menuCompra();
+     break;
+     case 2:
+         menuCarrito();
+      
+         
+     case 3:
+      //agregar lo de buscar por genero o desarollador usando arboles   
+     case 4:
+     //llevar usuario a area de pago    
+     default:
+                System.out.print("Esa opcion no existe\n");
+                menuUsuario();
+ }
+}
+catch(Exception e){
+    System.out.print("Parametro invalido\n");
+    menuUsuario();
+}
+ }
+
+ public void llenarListasPRUEBA(){
+   listaJuego.insertarJuego(new Juego("MEJOR TITULO 1","MEJOR DESAROLLADOR 1","Accion","MEJOR DESCRIPCION",1,1,100));
+   listaJuego.insertarJuego(new Juego("El mejor juego x2 Electric Boogaloo","Desarollador 2","Estrategia","Un juegaso 12/10",2,2,2000));
+    listaUsuario.insertarUsuario(new Usuario("admin","admin",18,1));
+    orden.push(new NodoPila(new Orden(listaJuego.extrae(1),this.orden.idOrden+1)));
+ }
        // </editor-fold> 
+ 
+ public void menuCompra(){
+   try{
+   getListaJuego();
+   System.out.print("\n"+ "Insertar ID del juego que desea agregar al carrito o 0 para regresar");
+   
+   int option = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la accion a realizar"));
+
+   if (option == 0){
+       menuUsuario();
+   }else{
+       orden.push(new NodoPila(new Orden(listaJuego.extrae(option),this.orden.idOrden+1)));
+       menuCompra();
+   }
+   
+ }catch (Exception e){
+     System.out.print("Parametro invalido\n");
+     menuCompra();
+ }
+ }
 }

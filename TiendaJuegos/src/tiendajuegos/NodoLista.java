@@ -12,12 +12,9 @@ package tiendajuegos;
 public class NodoLista {
  private NodoLista next;
  private NodoLista back;
- private Juego dato;
+ private Juego datoJuego;
+ private Usuario datoUsuario;
  private int idLista;
- 
-    public NodoLista(Juego dato) {
-        this.dato = dato;
-    }
 
     public NodoLista getNext() {
         return next;
@@ -35,12 +32,20 @@ public class NodoLista {
         this.back = back;
     }
 
-    public Juego getDato() {
-        return dato;
+    public Juego getDatoJuego() {
+        return datoJuego;
     }
 
-    public void setDato(Juego dato) {
-        this.dato = dato;
+    public void setDatoJuego(Juego datoJuego) {
+        this.datoJuego = datoJuego;
+    }
+
+    public Usuario getDatoUsuario() {
+        return datoUsuario;
+    }
+
+    public void setDatoUsuario(Usuario datoUsuario) {
+        this.datoUsuario = datoUsuario;
     }
 
     public int getIdLista() {
@@ -51,9 +56,20 @@ public class NodoLista {
         this.idLista = idLista;
     }
 
+    public NodoLista(Juego datoJuego) {
+        this.datoJuego = datoJuego;
+    }
+
+    public NodoLista(Usuario datoUsuario) {
+        this.datoUsuario = datoUsuario;
+    }
+
     @Override
     public String toString() {
-        return  dato + "\n";
+        return "" + datoJuego;
     }
+ 
+  
+ 
  
 }

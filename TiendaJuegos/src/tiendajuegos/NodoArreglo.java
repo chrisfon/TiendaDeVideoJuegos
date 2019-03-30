@@ -9,8 +9,6 @@ package tiendajuegos;
  *
  * @author ulacit
  */
-public class Carrito {
-private Usuario usuario;
-
-
+public class NodoArreglo {
+    
 }

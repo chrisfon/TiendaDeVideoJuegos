@@ -10,11 +10,18 @@ package tiendajuegos;
  * @author ulacit
  */
 public class Usuario {
-private String nombreUsuario;
-private int edadUsuario;
-private String contraseñaUsuario;
-private int tarjetaUsuario;
 
+    private String nombreUsuario;
+    private int edadUsuario;
+    private String contraseñaUsuario;
+    private int tarjetaUsuario;
+    private int usuarioID;
+    private Lista listaJuegoUsuario;
+    
+    public String getContraseñaUsuario() {
+        return contraseñaUsuario;
+    }
+    
     public String getNombreUsuario() {
         return nombreUsuario;
     }
@@ -41,6 +48,30 @@ private int tarjetaUsuario;
 
     public void setTarjetaUsuario(int tarjetaUsuario) {
         this.tarjetaUsuario = tarjetaUsuario;
+    }
+
+    public int getUsuarioID() {
+        return usuarioID;
+    }
+
+    public void setUsuarioID(int usuarioID) {
+        this.usuarioID = usuarioID;
+    }
+
+    public Usuario(String nombreUsuario, String contraseñaUsuario,int edadUsuario, int usuarioID) {
+        this.nombreUsuario = nombreUsuario;
+        this.edadUsuario = edadUsuario;
+        this.contraseñaUsuario = contraseñaUsuario;
+        this.usuarioID = usuarioID;
+        this.listaJuegoUsuario = new Lista ();
+    }
+
+    public Lista getListaJuegoUsuario() {
+        return listaJuegoUsuario;
+    }
+
+    public void setListaJuegoUsuario(Lista listaJuegoUsuario) {
+        this.listaJuegoUsuario = listaJuegoUsuario;
     }
 
 }

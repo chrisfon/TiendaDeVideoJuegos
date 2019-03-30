@@ -10,7 +10,36 @@ package tiendajuegos;
  * @author ulacit
  */
 public class Orden {
-private Juego juegoOrden;
-private int montoTotal;
+private Juego juego;
+
+private int idOrden;
 //NODO PARA PILA
+
+    public Orden(Juego j, int id) {
+        this.idOrden = id;
+        this.juego = j;
+    }
+
+    public Juego getJuego() {
+        return juego;
+    }
+
+    public void setJuego(Juego j) {
+        this.juego = juego;
+    }
+
+    public int getIdOrden() {
+        return idOrden;
+    }
+
+    public void setIdOrden(int idOrden) {
+        this.idOrden = idOrden;
+    }
+
+    @Override
+    public String toString() {
+        return "*************************"+juego.toStringCobro()+"\n";
+    }
+
+
 }

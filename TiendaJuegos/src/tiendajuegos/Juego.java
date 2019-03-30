@@ -18,13 +18,17 @@ public class Juego {
  private int cantidadJuego;
  private int precioJuego; 
 // <editor-fold desc="Constructor, getter and setter"> 
-    public Juego(String tituloJuego, int idJuego, int precioJuego) {
+
+
+    public Juego(String tituloJuego, String desarolladorJuego, String generoJuego, String descripcionJuego, int idJuego, int cantidadJuego, int precioJuego) {
         this.tituloJuego = tituloJuego;
-       
+        this.desarolladorJuego = desarolladorJuego;
+        this.generoJuego = generoJuego;
+        this.descripcionJuego = descripcionJuego;
         this.idJuego = idJuego;
+        this.cantidadJuego = cantidadJuego;
         this.precioJuego = precioJuego;
     }
-
     
     public String getTituloJuego() {
         return tituloJuego;
@@ -82,9 +86,14 @@ public class Juego {
         this.precioJuego = precioJuego;
     }
    // </editor-fold>
+
     @Override
     public String toString() {
-        return "Titulo:" + tituloJuego + " Precio:"+precioJuego ;
+        return "**********************************************************************\n"+"Titulo: " + tituloJuego+"\n" + " Desarollador: " + desarolladorJuego + "\n"+" Genero: " + generoJuego + "\n"+ " Desc. Breve: " + descripcionJuego + "\n"+ " Cantidad que quedan: " + cantidadJuego + "\n"+"ID de juego: "+ idJuego + "\n" + " Precio: " + precioJuego + "\n";
+    }
+   
+    public String toStringCobro() {
+        return "**********************************************************************\n"+"Titulo: " + tituloJuego+"  Precio: " + precioJuego + "\n";
     }
  
 }
