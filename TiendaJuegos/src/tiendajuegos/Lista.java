@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package tiendajuegos;
-
+import javax.swing.JOptionPane;
 /**
  *
  * @author PJ129
@@ -58,17 +58,29 @@ public class Lista {
       if (cabeza!=null) {
             if (id>=cabeza.getDatoJuego().getIdJuego() && id<=ultimo.getDatoJuego().getIdJuego()) {
                 if (cabeza.getDatoJuego().getIdJuego()==id) {
-                    p=cabeza.getDatoJuego();
-                   
+                    if (cabeza.getDatoJuego().getCantidadJuego()>0){
+                     cabeza.getDatoJuego().setCantidadJuego(cabeza.getDatoJuego().getCantidadJuego() - 1);
+                    p=cabeza.getDatoJuego();   
+                    }
+                    
                 }else{
                      NodoLista aux=cabeza;               
                 while(aux.getNext()!=cabeza){                
                aux=aux.getNext();               
                 } 
                 if (aux.getDatoJuego().getIdJuego()==id) {
-                    p=aux.getDatoJuego();
+                   if (aux.getDatoJuego().getCantidadJuego()>0){
+                     aux.getDatoJuego().setCantidadJuego(aux.getDatoJuego().getCantidadJuego() - 1);
+                    p=aux.getDatoJuego();   
+                    }else{
+                    
+                       JOptionPane.showMessageDialog(null,"El juego se encuentra agotado!");
+                    
+                    } 
+                    
                     if (aux.getNext()== ultimo) {
                         ultimo=aux;
+                        
                     }
                  
                 
@@ -157,6 +169,46 @@ public class Lista {
         return s;
     }
     
-
+public Juego extraeSinResta(int id){
+       Juego p=null;
+      if (cabeza!=null) {
+            if (id>=cabeza.getDatoJuego().getIdJuego() && id<=ultimo.getDatoJuego().getIdJuego()) {
+                if (cabeza.getDatoJuego().getIdJuego()==id) {
+                    if (cabeza.getDatoJuego().getCantidadJuego()>0){
+                     
+                    p=cabeza.getDatoJuego();   
+                    }else{
+                         JOptionPane.showMessageDialog(null,"El juego se encuentra agotado!");
+                    }
+                    
+                }else{
+                     NodoLista aux=cabeza;               
+                while(aux.getNext()!=cabeza){                
+               aux=aux.getNext();               
+                } 
+                if (aux.getDatoJuego().getIdJuego()==id) {
+                   if (aux.getDatoJuego().getCantidadJuego()>0){
+                     
+                    p=aux.getDatoJuego();   
+                    }else{
+                        JOptionPane.showMessageDialog(null,"El juego se encuentra agotado!");
+                   }
+                    
+                    if (aux.getNext()== ultimo) {
+                        ultimo=aux;
+                        
+                    }
+                 
+                
+                }
+                    
+                }               
+               
+            }
+            
+        }
+     
+    return p;
+   }
     
 }

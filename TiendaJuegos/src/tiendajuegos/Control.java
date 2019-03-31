@@ -15,17 +15,16 @@ public class Control {
  private Lista listaJuego = new Lista();
  private Lista listaUsuario = new Lista();
  private Pilas orden = new Pilas();
- private Juego juego1 = new Juego("El mejor juego x2 Electric Boogaloo","Desarollador 2","Estrategia","Un juegaso 12/10",2,2,2000);
+ 
     public Lista getListaJuego() {
-     System.out.print(listaJuego);
-       
+      System.out.print(listaJuego+"\n*************************\n");
+        JOptionPane.showMessageDialog(null,listaJuego); 
         return listaJuego;
     }
 
     public void menuCarrito() {
-      System.out.print(orden);
-      System.out.print("\n MONTO TOTAL DE LA ORDEN:"+orden.montoTotal()+"\n"+"\n");
-      
+      JOptionPane.showMessageDialog(null,orden+"\n MONTO TOTAL DE LA ORDEN:"+orden.montoTotal()+"\n"+"\n");
+
       int option = Integer.parseInt(JOptionPane.showInputDialog("Ingrese 1. para eliminar ultimo juego agregado (el mas arriba) o 0. para devolverse"));
       if (option == 0){
        menuUsuario();   
@@ -35,6 +34,7 @@ public class Control {
           menuCarrito();
       }else{
           System.out.print("Opcion invalida");
+          menuCarrito();
       }
         
     }
@@ -88,22 +88,22 @@ public class Control {
     }
     }
 public void menuUsuario(){
- try{
-    System.out.print("1. Ver juegos\n"
+
+ int option = Integer.parseInt(JOptionPane.showInputDialog("\n1. Ver juegos\n"
          + "2. Ver carrito\n"
          + "3. Buscar juego (sort)\n"
          + "4. Finalizar Orden\n"
-         + "0.Salir\n");   
- int option = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la accion a realizar"));
+         + "0.Salir\n"));
+ try{
  switch(option){
      case 0:
          System.exit(0);
      case 1:
-     menuCompra();
-     break;
+        menuCompra();
+        break;
      case 2:
          menuCarrito();
-      
+         break;
          
      case 3:
       //agregar lo de buscar por genero o desarollador usando arboles   
@@ -115,8 +115,13 @@ public void menuUsuario(){
  }
 }
 catch(Exception e){
+    if (option==2){
+       menuCarrito(); 
+    }
+
     System.out.print("Parametro invalido\n");
     menuUsuario();
+   
 }
  }
 
@@ -129,17 +134,24 @@ catch(Exception e){
        // </editor-fold> 
  
  public void menuCompra(){
-   try{
-   getListaJuego();
-   System.out.print("\n"+ "Insertar ID del juego que desea agregar al carrito o 0 para regresar");
    
-   int option = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la accion a realizar"));
+   getListaJuego();
+   
+   try{
+   int option = Integer.parseInt(JOptionPane.showInputDialog(("\n"+ "Insertar ID del juego que desea agregar al carrito o 0 para regresar")));
 
    if (option == 0){
        menuUsuario();
    }else{
+      if (listaJuego.extraeSinResta(option).getCantidadJuego()>0){
+       
        orden.push(new NodoPila(new Orden(listaJuego.extrae(option),this.orden.idOrden+1)));
-       menuCompra();
+       menuCompra();   
+      }else{
+       
+          JOptionPane.showMessageDialog(null,"El juego se encuentra agotado!");
+      }
+       
    }
    
  }catch (Exception e){
