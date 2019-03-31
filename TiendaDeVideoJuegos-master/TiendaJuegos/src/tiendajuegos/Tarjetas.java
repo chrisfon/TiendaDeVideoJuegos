@@ -12,5 +12,5 @@ package tiendajuegos;
 public class Tarjetas {
   private int idTarjeta;
   private String fechaVencimiento;
-  
+  private String nombreTarjeta;
 }
