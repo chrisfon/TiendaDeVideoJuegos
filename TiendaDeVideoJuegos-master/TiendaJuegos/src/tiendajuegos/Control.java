@@ -49,7 +49,7 @@ public class Control {
     
     public void menuLogin (){
         try{
-        llenarListasPRUEBA();
+       
         int option = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la accion a realizar: \n1.Registrarse\n2.Ingresar:\n3.Cerrar "));
         switch (option){
             case 1:
@@ -72,8 +72,9 @@ public class Control {
                 }else{
                     JOptionPane.showMessageDialog(null, "No se encontro referencias con los datos ingresados");
                     this.menuLogin();
+                
                 }
-                break;
+              break;
             case 3:
                 System.exit(0);
             default:
@@ -84,18 +85,24 @@ public class Control {
         
     }catch (Exception e){
        System.out.print("Parametro invalido\n");
+ 
        menuLogin();
     }
     }
 public void menuUsuario(){
 
- int option = Integer.parseInt(JOptionPane.showInputDialog("\n1. Ver juegos\n"
+ try{
+
+     
+     
+     int option= 0;
+ option = Integer.parseInt(JOptionPane.showInputDialog("\n1. Ver juegos\n"
          + "2. Ver carrito\n"
          + "3. Buscar juego (sort)\n"
          + "4. Finalizar Orden\n"
          + "0.Salir\n"));
- try{
- switch(option){
+     
+     switch(option){
      case 0:
          System.exit(0);
      case 1:
@@ -115,11 +122,12 @@ public void menuUsuario(){
  }
 }
 catch(Exception e){
-    if (option==2){
-       menuCarrito(); 
-    }
+//    if (option==2){
+//       menuCarrito(); 
+//    }
 
     System.out.print("Parametro invalido\n");
+
     menuUsuario();
    
 }
@@ -131,7 +139,7 @@ catch(Exception e){
     listaUsuario.insertarUsuario(new Usuario("admin","admin",18,1));
     orden.push(new NodoPila(new Orden(listaJuego.extrae(1),this.orden.idOrden+1)));
  }
-       // </editor-fold> 
+
  
  public void menuCompra(){
    

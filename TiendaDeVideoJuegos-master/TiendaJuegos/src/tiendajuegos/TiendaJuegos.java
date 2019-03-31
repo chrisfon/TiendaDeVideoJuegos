@@ -17,6 +17,7 @@ public class TiendaJuegos {
     public static void main(String[] args) {
         // TODO code application logic here
         Control c = new Control ();
+        c.llenarListasPRUEBA();
         c.menuLogin();
     }
     // <editor-fold desc="Informacion"> 
