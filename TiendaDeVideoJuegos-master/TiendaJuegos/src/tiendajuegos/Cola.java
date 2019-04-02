@@ -12,7 +12,6 @@ package tiendajuegos;
 public class Cola {
     NodoCola frente;
     NodoCola ultimo;
-    Pilas pila;
     
     
     public void encola(NodoCola d){
