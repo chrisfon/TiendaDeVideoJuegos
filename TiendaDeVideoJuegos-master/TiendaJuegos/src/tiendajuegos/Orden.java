@@ -10,12 +10,12 @@ package tiendajuegos;
  * @author ulacit
  */
 public class Orden {
-private Juego juego;
+private Pilas pila;
 
 private int IdOrden;
 //NODO PARA PILA
 
-    public Orden(Juego juego, int IdOrden) {
+    public Orden(Pilas  pila, int IdOrden) {
         this.juego = juego;
         this.IdOrden = IdOrden;
     }
