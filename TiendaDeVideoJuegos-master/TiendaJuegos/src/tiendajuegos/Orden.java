@@ -12,14 +12,23 @@ package tiendajuegos;
 public class Orden {
 private Juego juego;
 
-private int idOrden;
+private int IdOrden;
 //NODO PARA PILA
 
-    public Orden(Juego j, int id) {
-        this.idOrden = id;
-        this.juego = j;
+    public Orden(Juego juego, int IdOrden) {
+        this.juego = juego;
+        this.IdOrden = IdOrden;
     }
 
+    public int getIdOrden() {
+        return IdOrden;
+    }
+
+    public void setIdOrden(int IdOrden) {
+        this.IdOrden = IdOrden;
+    }
+
+   
     public Juego getJuego() {
         return juego;
     }
@@ -28,18 +37,8 @@ private int idOrden;
         this.juego = juego;
     }
 
-    public int getIdOrden() {
-        return idOrden;
-    }
-
-    public void setIdOrden(int idOrden) {
-        this.idOrden = idOrden;
-    }
-
     @Override
     public String toString() {
-        return "*************************"+juego.toStringCobro()+"\n";
+        return juego.toString();
     }
-
-
 }

@@ -11,8 +11,13 @@ package tiendajuegos;
  */
 public class NodoCola {
 private NodoCola atras;
+ private Orden orden;
 private int idCola;
 //private dato o juego dato;
+
+    public NodoCola(Orden orden) {
+        this.orden = orden;
+    }
 
 
 //FALTA TO STRING
@@ -36,6 +41,20 @@ private int idCola;
     public void setIdCola(int idCola) {
         this.idCola = idCola;
     }
+
+    public Orden getOrden() {
+        return orden;
+    }
+
+    public void setOrden(Orden orden) {
+        this.orden = orden;
+    }
+
+    @Override
+    public String toString() {
+        return ""+orden.toString() ;
+    }
+
 
 
 

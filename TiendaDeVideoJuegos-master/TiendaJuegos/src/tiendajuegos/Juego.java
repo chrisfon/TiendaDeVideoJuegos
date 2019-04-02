@@ -95,5 +95,9 @@ public class Juego {
     public String toStringCobro() {
         return "**********************************************************************\n"+"Titulo: " + tituloJuego+"  Precio: " + precioJuego + "\n";
     }
- 
+
+    String transferirInfo() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
 }
