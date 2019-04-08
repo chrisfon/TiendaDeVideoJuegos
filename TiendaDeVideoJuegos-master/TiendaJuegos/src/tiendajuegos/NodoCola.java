@@ -11,12 +11,12 @@ package tiendajuegos;
  */
 public class NodoCola {
 private NodoCola atras;
- private Orden orden;
+ private Pilas pila;
 private int idCola;
 //private dato o juego dato;
 
-    public NodoCola(Orden orden) {
-        this.orden = orden;
+    public NodoCola(Pilas pila) {
+        this.pila = pila;
     }
 
 
@@ -42,17 +42,17 @@ private int idCola;
         this.idCola = idCola;
     }
 
-    public Orden getOrden() {
-        return orden;
+    public Pilas getpila() {
+        return pila;
     }
 
-    public void setOrden(Orden orden) {
-        this.orden = orden;
+    public void setOrden(Pilas pila) {
+        this.pila = pila;
     }
 
     @Override
     public String toString() {
-        return ""+orden.toString() ;
+        return ""+pila.toString() ;
     }
 
 
