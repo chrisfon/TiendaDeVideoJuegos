@@ -146,7 +146,7 @@ public class Lista {
                 encontrado = true;
             }else{
                  usuario = null;
-                 //encontrado = false;
+                 
             }  
              
              aux = aux.getNext();

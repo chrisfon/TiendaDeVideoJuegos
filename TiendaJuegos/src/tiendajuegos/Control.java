@@ -57,7 +57,7 @@ public class Control {
                 String contrasenaUsuario = JOptionPane.showInputDialog("Ingrese la contrasena");
                 int edadUsuario = Integer.parseInt(JOptionPane.showInputDialog("Ingrese su edad"));
                 int idUsuario = Integer.parseInt(JOptionPane.showInputDialog("Ingrese su numero de cedula"));
-                this.listaUsuario.insertarUsuario(new Usuario (nombreUsuario, contrasenaUsuario,edadUsuario,idUsuario));
+                this.listaUsuario.insertarUsuario(new Usuario (nombreUsuario, contrasenaUsuario,edadUsuario,idUsuario,2));
                 this.menuLogin();
                 break;
                 
@@ -67,8 +67,14 @@ public class Control {
                 Usuario usuario = this.listaUsuario.buscarUsuario(nombreIngresado, contrasenaIngresado); 
                 if (usuario != null){
                     this.listaUsuario.setUsuario(usuario);
+                    if (usuario.getUsuarioTipo() == 2){
                     JOptionPane.showMessageDialog(null, "Bienvenido "+usuario.getNombreUsuario());
                     menuUsuario();
+                    } else if (usuario.getUsuarioTipo() == 1){
+                     //menuADMIN (para ver ordenes pendientes, completadas y demas   
+                     JOptionPane.showMessageDialog(null, "Bienvenido MENU ADMIN PENDIENTE");
+                     menuUsuario();
+                    }
                 }else{
                     JOptionPane.showMessageDialog(null, "No se encontro referencias con los datos ingresados");
                     this.menuLogin();
@@ -130,7 +136,8 @@ catch(Exception e){
  public void llenarListasPRUEBA(){
    listaJuego.insertarJuego(new Juego("MEJOR TITULO 1","MEJOR DESAROLLADOR 1","Accion","MEJOR DESCRIPCION",1,1,100));
    listaJuego.insertarJuego(new Juego("El mejor juego x2 Electric Boogaloo","Desarollador 2","Estrategia","Un juegaso 12/10",2,2,2000));
-    listaUsuario.insertarUsuario(new Usuario("admin","admin",18,1));
+    listaUsuario.insertarUsuario(new Usuario("admin","admin",18,1,1));
+    listaUsuario.insertarUsuario(new Usuario("user","user",18,1,2));
     orden.push(new NodoPila(new Orden(listaJuego.extrae(1),this.orden.idOrden+1)));
  }
        // </editor-fold> 

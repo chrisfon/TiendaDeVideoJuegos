@@ -67,12 +67,13 @@ public class Usuario {
         this.usuarioID = usuarioID;
     }
 
-    public Usuario(String nombreUsuario, String contraseñaUsuario,int edadUsuario, int usuarioID) {
+    public Usuario(String nombreUsuario, String contraseñaUsuario,int edadUsuario, int usuarioID, int usuarioTipo) {
         this.nombreUsuario = nombreUsuario;
         this.edadUsuario = edadUsuario;
         this.contraseñaUsuario = contraseñaUsuario;
         this.usuarioID = usuarioID;
         this.listaJuegoUsuario = new Lista ();
+        this.usuarioTipo = usuarioTipo;
     }
 
     public Lista getListaJuegoUsuario() {

@@ -9,8 +9,8 @@ package tiendajuegos;
  *
  * @author ulacit
  */
-public class Carrito {
-private Usuario usuario;
+public class ColaOrdenes {
+private Lista Ordenes;
 
-
+//va a ir agregando una lista de ordenes en forma de cola (primero que viene primero q atiende)
 }
