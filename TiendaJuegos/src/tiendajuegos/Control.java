@@ -49,7 +49,7 @@ public class Control {
     
     public void menuLogin (){
         try{
-        llenarListasPRUEBA();
+       
         int option = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la accion a realizar: \n1.Registrarse\n2.Ingresar:\n3.Cerrar "));
         switch (option){
             case 1:
@@ -72,8 +72,8 @@ public class Control {
                     menuUsuario();
                     } else if (usuario.getUsuarioTipo() == 1){
                      //menuADMIN (para ver ordenes pendientes, completadas y demas   
-                     JOptionPane.showMessageDialog(null, "Bienvenido MENU ADMIN PENDIENTE");
-                     menuUsuario();
+                     JOptionPane.showMessageDialog(null, "Bienvenido ADMIN");
+                     menuAdmin();
                     }
                 }else{
                     JOptionPane.showMessageDialog(null, "No se encontro referencias con los datos ingresados");
@@ -104,7 +104,7 @@ public void menuUsuario(){
  
    switch(option){
      case 0:
-         System.exit(0);
+         menuLogin();
      case 1:
         menuCompra();
         break;
@@ -122,6 +122,7 @@ public void menuUsuario(){
                 menuUsuario();
  }
 }
+ 
 catch(Exception e){
     if (option==2){
        menuCarrito(); 
@@ -133,11 +134,60 @@ catch(Exception e){
 }
  }
 
+public void menuAdmin(){
+
+ int option = Integer.parseInt(JOptionPane.showInputDialog("\n1. Ver juegos\n"
+         + "2. Agregar admin\n"
+         + "3. Ver Historial de Ordenes y Pendientes\n"
+         + "0. Salir\n"));
+ try{
+ 
+   switch(option){
+     case 0:
+         menuLogin();
+     case 1:
+        menuCompra();
+        break;
+     case 2:
+        String nombreUsuario = JOptionPane.showInputDialog("Ingrese el nombre del usuario");
+        String contrasenaUsuario = JOptionPane.showInputDialog("Ingrese la contrasena");
+        int edadUsuario = Integer.parseInt(JOptionPane.showInputDialog("Ingrese la edad"));
+        int idUsuario = Integer.parseInt(JOptionPane.showInputDialog("Ingrese cedula del nuevo admin"));
+        this.listaUsuario.insertarUsuario(new Usuario (nombreUsuario, contrasenaUsuario,edadUsuario,idUsuario,1));
+        JOptionPane.showMessageDialog(null, "Ha agregado una nueva cuenta admin!");
+        menuAdmin();
+         
+     case 3:
+      //agregar lo de buscar por genero o desarollador usando arboles   
+     case 4:
+     //VER COLA DE ORDENES, con print de completadas y no completadas (va a ser un valor boolean)   
+         
+     default:
+                System.out.print("Esa opcion no existe\n");
+                menuUsuario();
+ }
+}
+ 
+catch(Exception e){
+    if (option==2){
+       menuCarrito(); 
+    }
+
+    System.out.print("Parametro invalido\n");
+    menuUsuario();
+   
+}
+ }
+
+
+
+
+
  public void llenarListasPRUEBA(){
    listaJuego.insertarJuego(new Juego("MEJOR TITULO 1","MEJOR DESAROLLADOR 1","Accion","MEJOR DESCRIPCION",1,1,100));
    listaJuego.insertarJuego(new Juego("El mejor juego x2 Electric Boogaloo","Desarollador 2","Estrategia","Un juegaso 12/10",2,2,2000));
-    listaUsuario.insertarUsuario(new Usuario("admin","admin",18,1,1));
-    listaUsuario.insertarUsuario(new Usuario("user","user",18,1,2));
+    listaUsuario.insertarUsuario(new Usuario("admin","admin",19,1,1));
+    listaUsuario.insertarUsuario(new Usuario("user","user",18,2,2));
     orden.push(new NodoPila(new Orden(listaJuego.extrae(1),this.orden.idOrden+1)));
  }
        // </editor-fold> 
@@ -168,4 +218,10 @@ catch(Exception e){
      menuCompra();
  }
  }
+
+    public Control() {
+    llenarListasPRUEBA();
+    }
+
+
 }

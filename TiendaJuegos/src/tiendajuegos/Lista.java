@@ -138,6 +138,7 @@ public class Lista {
         if (cabeza!=null) {
              if (aux.getDatoUsuario().getNombreUsuario().equals(nombreUsuario) && aux.getDatoUsuario().getContraseñaUsuario().equals(contrasenaUsuario)){
                 usuario = aux.getDatoUsuario();
+                return usuario;
              }
              aux = aux.getNext();
             while(aux != cabeza && !encontrado){
