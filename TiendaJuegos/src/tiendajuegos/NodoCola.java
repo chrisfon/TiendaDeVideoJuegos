@@ -12,10 +12,27 @@ package tiendajuegos;
 public class NodoCola {
 private NodoCola atras;
 private int idCola;
+private Lista orden;
+private String Usuario;
 //private dato o juego dato;
+    
+    public Lista getOrden() {
+        return orden;
+    }
 
+    public String getUsuario() {
+        return Usuario;
+    }
 
-//FALTA TO STRING
+    public void setUsuario(String Usuario) {
+        this.Usuario = Usuario;
+    }
+
+    
+    public void setOrden(Lista orden) {    
+        this.orden = orden;
+    }
+
     public NodoCola getAtras() {
         return atras;
     }
@@ -35,6 +52,17 @@ private int idCola;
 
     public void setIdCola(int idCola) {
         this.idCola = idCola;
+    }
+
+    public NodoCola(int idCola, Lista orden,String Usuario) {
+        this.idCola = idCola;
+        this.orden = orden;
+        this.Usuario = Usuario;
+    }
+
+    @Override
+    public String toString() {
+        return "idCola=" + idCola + "\nEl que ordeno: "+ Usuario +"\norden=\n" + orden;
     }
 
 

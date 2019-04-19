@@ -15,7 +15,8 @@ public class Control {
  private Lista listaJuego = new Lista();
  private Lista listaUsuario = new Lista();
  private Pilas orden = new Pilas();
- 
+ private Cola colaOrdenes = new Cola();
+ private int contadorOrdenid = 1;
     public Lista getListaJuego() {
       System.out.print(listaJuego+"\n*************************\n");
         JOptionPane.showMessageDialog(null,listaJuego); 
@@ -115,6 +116,12 @@ public void menuUsuario(){
      case 3:
       //agregar lo de buscar por genero o desarollador usando arboles   
      case 4:
+         
+         colaOrdenes.encola(new NodoCola(contadorOrdenid,orden.pasarCola(),listaUsuario.getUsuario().getNombreUsuario()));
+         contadorOrdenid++;
+         JOptionPane.showMessageDialog(null, "Su Orden ha sido completada!");
+         menuUsuario();
+         break;
      //llevar usuario a area de pago  
      
      default:
@@ -138,7 +145,7 @@ public void menuAdmin(){
 
  int option = Integer.parseInt(JOptionPane.showInputDialog("\n1. Ver juegos\n"
          + "2. Agregar admin\n"
-         + "3. Ver Historial de Ordenes y Pendientes\n"
+         + "3. Ver Historial de Ordenes\n"
          + "0. Salir\n"));
  try{
  
@@ -146,7 +153,7 @@ public void menuAdmin(){
      case 0:
          menuLogin();
      case 1:
-        menuCompra();
+        getListaJuego();
         break;
      case 2:
         String nombreUsuario = JOptionPane.showInputDialog("Ingrese el nombre del usuario");
@@ -158,13 +165,14 @@ public void menuAdmin(){
         menuAdmin();
          
      case 3:
-      //agregar lo de buscar por genero o desarollador usando arboles   
+        JOptionPane.showMessageDialog(null, "El historial de ordenes es:\n"+colaOrdenes);
+        menuAdmin();
      case 4:
      //VER COLA DE ORDENES, con print de completadas y no completadas (va a ser un valor boolean)   
          
      default:
                 System.out.print("Esa opcion no existe\n");
-                menuUsuario();
+                menuAdmin();
  }
 }
  

@@ -91,4 +91,15 @@ int montoTotal = 0;
         }
         return s;
     }
+public Lista pasarCola(){
+    Lista listatmp = new Lista();
+    NodoPila aux = top;
+    while (top != null){
+       listatmp.insertarJuego(this.pop().getOrden().getJuego());
+       
+    }
+ 
+    return listatmp;
+}
+
 }
