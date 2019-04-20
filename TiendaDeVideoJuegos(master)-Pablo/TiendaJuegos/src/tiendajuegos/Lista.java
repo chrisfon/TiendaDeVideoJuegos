@@ -125,7 +125,7 @@ public class Lista {
     }
     
     
-   public Juego extraeJuego(int id){
+   public Juego extrae(int id){
        Juego p=null;
       if (cabeza!=null) {
             if (id>=cabeza.getDatoJuego().getIdJuego() && id<=ultimo.getDatoJuego().getIdJuego()) {
@@ -164,8 +164,7 @@ public class Lista {
      
     return p;
    }
-   
-   
+       
    public Aparato extraeAparato(int id){
        Aparato p=null;
       if (cabeza!=null) {
@@ -177,27 +176,25 @@ public class Lista {
                     }
                     
                 }else{
-                     NodoLista aux=cabeza;               
-                while(aux.getNext()!=cabeza){                
-               aux=aux.getNext();               
-                } 
-                if (aux.getAparato().getIdAparato()==id) {
+                     NodoLista aux=cabeza.getNext();               
+                while(aux!=cabeza){                
+               if (aux.getAparato().getIdAparato()==id) {
                    if (aux.getAparato().getCantidadDisponible()>0){
                      aux.getAparato().setCantidadDisponible(aux.getAparato().getCantidadDisponible() - 1);
                     p=aux.getAparato();   
                     }else{
                     
-                       JOptionPane.showMessageDialog(null,"El combo se encuentra agotado!");
+                       JOptionPane.showMessageDialog(null,"El aparato se encuentra agotado!");
                     
                     } 
                     
-                    if (aux.getNext()== ultimo) {
-                        ultimo=aux;
-                        
-                    }
+                    
                  
                 
                 }
+                    aux=aux.getNext();               
+                } 
+                
                     
                 }               
                
@@ -208,8 +205,8 @@ public class Lista {
     return p;
    }
    
-   
-   public Combos extraeCombo(int id){
+       
+   public Combos extraeCombos(int id){
        Combos p=null;
       if (cabeza!=null) {
             if (id>=cabeza.getCombos().getIdCombo() && id<=ultimo.getCombos().getIdCombo()) {
@@ -220,11 +217,9 @@ public class Lista {
                     }
                     
                 }else{
-                     NodoLista aux=cabeza;               
-                while(aux.getNext()!=cabeza){                
-               aux=aux.getNext();               
-                } 
-                if (aux.getCombos().getIdCombo()==id) {
+                     NodoLista aux=cabeza.getNext();               
+                while(aux!=cabeza){                
+               if (aux.getCombos().getIdCombo()==id) {
                    if (aux.getCombos().getCantidadDisponible()>0){
                      aux.getCombos().setCantidadDisponible(aux.getCombos().getCantidadDisponible() - 1);
                     p=aux.getCombos();   
@@ -234,13 +229,13 @@ public class Lista {
                     
                     } 
                     
-                    if (aux.getNext()== ultimo) {
-                        ultimo=aux;
-                        
-                    }
+                    
                  
                 
                 }
+                    aux=aux.getNext();               
+                } 
+                
                     
                 }               
                
