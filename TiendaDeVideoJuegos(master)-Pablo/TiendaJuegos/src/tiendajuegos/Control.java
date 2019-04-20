@@ -216,9 +216,13 @@ catch(Exception e){
  public void llenarListasPRUEBA(){
    listaJuego.insertarJuego(new Juego("MEJOR TITULO 1", "MEJOR DESAROLLADOR 1", "Accion", "MEJOR DESCRIPCION", 1, 5, 100));
         listaJuego.insertarJuego(new Juego("El mejor juego x2 Electric Boogaloo", "Desarollador 2", "Estrategia", "Un juegaso 12/10", 2, 7, 2000));
+<<<<<<< HEAD
         listaJuego.insertarJuego(new Juego ("jhvhvhvhvd","jbdfhdhjvhjvd","dgfghdghfghd","dhfghdhgfd",43,43,43));
         listaJuego.insertarJuego(new Juego ("jhvhvhvhvd","jbdfhdhjvhjvd","dgfghdghfghd","dhfghdhgfd",3,3,3));
         listaJuego.insertarJuego(new Juego ("jhvhvhvhvd","jbdfhdhjvhjvd","dgfghdghfghd","dhfghdhgfd",45,45,45));
+=======
+         listaJuego.insertarJuego(new Juego("El mejor juego x3", "Desarollador 2", "Estrategia", "Un juegaso 12/10", 3, 7, 2000));
+>>>>>>> 9b37194ea71068607057a67d66d6f66efb010234
         listaAparato.insertarAparato(new Aparato("Audifonos", 2000, 50));
         listaAparato.insertarAparato(new Aparato("Mouse Gamer", 1500, 25));
         listaCombos.insertarCombo(new Combos("Call of duty", "Audifonos", 2450, 10, 1));
@@ -241,7 +245,12 @@ catch(Exception e){
                         menuUsuario();
                     } else {
                         if (listaJuego.extraeSinRestaJuego(option).getCantidadJuego() > 0) {
+<<<<<<< HEAD
                             carrito.push(new NodoPila(listaJuego.extraeJuego(option)));
+=======
+                            carrito.push(new NodoPila(listaJuego.extrae(option)));
+                             JOptionPane.showMessageDialog(null, "El juego se ha agregado!");
+>>>>>>> 9b37194ea71068607057a67d66d6f66efb010234
                             menuCompra();
                         } else {
 

@@ -136,11 +136,9 @@ public class Lista {
                     }
                     
                 }else{
-                     NodoLista aux=cabeza;               
-                while(aux.getNext()!=cabeza){                
-               aux=aux.getNext();               
-                } 
-                if (aux.getDatoJuego().getIdJuego()==id) {
+                     NodoLista aux=cabeza.getNext();               
+                while(aux!=cabeza){                
+               if (aux.getDatoJuego().getIdJuego()==id) {
                    if (aux.getDatoJuego().getCantidadJuego()>0){
                      aux.getDatoJuego().setCantidadJuego(aux.getDatoJuego().getCantidadJuego() - 1);
                     p=aux.getDatoJuego();   
@@ -150,13 +148,13 @@ public class Lista {
                     
                     } 
                     
-                    if (aux.getNext()== ultimo) {
-                        ultimo=aux;
-                        
-                    }
+                    
                  
                 
                 }
+                    aux=aux.getNext();               
+                } 
+                
                     
                 }               
                
@@ -385,11 +383,10 @@ public class Lista {
                     }
 
                 } else {
-                    NodoLista aux = cabeza;
-                    while (aux.getNext() != cabeza) {
-                        aux = aux.getNext();
-                    }
-                    if (aux.getDatoJuego().getIdJuego() == id) {
+                    NodoLista aux = cabeza.getNext();
+                    
+                    while (aux != cabeza) {
+                       if (aux.getDatoJuego().getIdJuego() == id) {
                         if (aux.getDatoJuego().getCantidadJuego() > 0) {
 
                             p = aux.getDatoJuego();
@@ -397,12 +394,12 @@ public class Lista {
                             JOptionPane.showMessageDialog(null, "El juego se encuentra agotado!");
                         }
 
-                        if (aux.getNext() == ultimo) {
-                            ultimo = aux;
-
-                        }
+                        
 
                     }
+                       aux = aux.getNext();
+                    }
+                    
 
                 }
 
