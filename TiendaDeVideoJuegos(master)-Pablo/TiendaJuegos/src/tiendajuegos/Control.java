@@ -216,6 +216,7 @@ catch(Exception e){
  public void llenarListasPRUEBA(){
    listaJuego.insertarJuego(new Juego("MEJOR TITULO 1", "MEJOR DESAROLLADOR 1", "Accion", "MEJOR DESCRIPCION", 1, 5, 100));
         listaJuego.insertarJuego(new Juego("El mejor juego x2 Electric Boogaloo", "Desarollador 2", "Estrategia", "Un juegaso 12/10", 2, 7, 2000));
+         listaJuego.insertarJuego(new Juego("El mejor juego x3", "Desarollador 2", "Estrategia", "Un juegaso 12/10", 3, 7, 2000));
         listaAparato.insertarAparato(new Aparato("Audifonos", 2000, 50));
         listaAparato.insertarAparato(new Aparato("Mouse Gamer", 1500, 25));
         listaCombos.insertarCombo(new Combos("Call of duty", "Audifonos", 2450, 10, 1));
@@ -239,6 +240,7 @@ catch(Exception e){
                     } else {
                         if (listaJuego.extraeSinRestaJuego(option).getCantidadJuego() > 0) {
                             carrito.push(new NodoPila(listaJuego.extrae(option)));
+                             JOptionPane.showMessageDialog(null, "El juego se ha agregado!");
                             menuCompra();
                         } else {
 
