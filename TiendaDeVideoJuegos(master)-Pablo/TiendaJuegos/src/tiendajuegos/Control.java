@@ -19,6 +19,7 @@ public class Control {
  private Pilas carrito = new Pilas();
  private Cola orden = new Cola();
  private int contadorOrdenid = 1;
+ Arbol a = new Arbol();
  
     public Lista getListaJuego() {
       System.out.print(listaJuego+"\n*************************\n");
@@ -130,7 +131,16 @@ public void menuUsuario(){
          break;
          
      case 3:
-      //agregar lo de buscar por genero o desarollador usando arboles   
+      Lista tmp = listaJuego;  
+      tmp.pasarArbol(a);
+      a.acomodarRonda(a.getRaiz());
+      a.acomodarRonda(a.getRaiz());
+      a.acomodarRonda(a.getRaiz());
+      a.acomodarRonda(a.getRaiz());
+      a.acomodarRonda(a.getRaiz());
+      a.acomodarRonda(a.getRaiz());
+      a.imprimirNivelCampeon(a.getRaiz(), 1);
+      menuUsuario(); 
      case 4:
          orden.encola(new NodoCola(contadorOrdenid,new Orden (carrito,this.contadorOrdenid),listaUsuario.getUsuario().getNombreUsuario()));
          contadorOrdenid++;

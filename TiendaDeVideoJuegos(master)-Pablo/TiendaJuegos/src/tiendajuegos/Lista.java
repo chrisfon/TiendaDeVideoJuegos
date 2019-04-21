@@ -472,5 +472,22 @@ public class Lista {
 
         return p;
     }
+ public Arbol pasarArbol(Arbol a) { 
+        NodoLista aux = cabeza;                
 
+        int limite = 1;
+        a.getRaiz().insertarNodo(aux.getDatoJuego());
+        aux = aux.getNext();
+        while (aux != cabeza && limite <= 16) {     
+
+            a.getRaiz().insertarNodo(aux.getDatoJuego()); 
+
+            limite += 1;
+
+            aux = aux.getNext();
+
+        }
+
+        return a;
+    }
 }
