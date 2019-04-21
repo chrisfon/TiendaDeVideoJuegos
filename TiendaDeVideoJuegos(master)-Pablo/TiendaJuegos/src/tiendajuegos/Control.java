@@ -134,13 +134,13 @@ public void menuUsuario(){
      case 3:
       Lista tmp = listaJuego;  
       tmp.pasarArbol(a);
-      a.acomodarRonda(a.getRaiz());
-      a.acomodarRonda(a.getRaiz());
-      a.acomodarRonda(a.getRaiz());
-      a.acomodarRonda(a.getRaiz());
-      a.acomodarRonda(a.getRaiz());
-      a.acomodarRonda(a.getRaiz());
-      a.imprimirNivelCampeon(a.getRaiz(), 2);
+      a.acomodarArbol(a.getRaiz());
+      a.acomodarArbol(a.getRaiz());
+      a.acomodarArbol(a.getRaiz());
+      a.acomodarArbol(a.getRaiz());
+      a.acomodarArbol(a.getRaiz());
+      a.imprimirNivelArbol(a.getRaiz(), 1);
+      
       menuUsuario(); 
      case 4:
          orden.encola(new NodoCola(contadorOrdenid,new Orden (carrito,this.contadorOrdenid),listaUsuario.getUsuario().getNombreUsuario()));
@@ -269,6 +269,7 @@ catch(Exception e){
                         } else {
 
                             JOptionPane.showMessageDialog(null, "El juego se encuentra agotado!");
+                            menuUsuario();
                         }
 
                     }
@@ -282,10 +283,11 @@ catch(Exception e){
                     } else {
                         if (listaAparato.extraeSinRestaAparato(option1).getCantidadDisponible() > 0) {
                             carrito.push(new NodoPila(listaAparato.extraeAparato(option1)));
-                            menuCompra();
+                            menuUsuario();
                         } else {
 
                             JOptionPane.showMessageDialog(null, "El aparato se encuentra agotado!");
+                            menuUsuario();
                         }
 
                     }
@@ -300,10 +302,11 @@ catch(Exception e){
                     } else {
                         if (listaCombos.extraeSinRestaCombo(option2).getCantidadDisponible() > 0) {
                             carrito.push(new NodoPila(listaCombos.extraeCombos(option2)));
-                            menuCompra();
+                            menuUsuario();
                         } else {
 
                             JOptionPane.showMessageDialog(null, "El combo se encuentra agotado!");
+                            menuUsuario();
                         }
 
                     }

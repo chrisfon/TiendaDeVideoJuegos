@@ -33,18 +33,18 @@ public class Arbol {
         }
     }
 
-    public void imprimirNivelCampeon(NodoArbol n, int ronda) { //impresion de un cierto nivel. Se tiene otro metodo de impresion por nivel porque esta se encarga de imprimir el campeon (sin el contadorVs)
+    public void imprimirNivelArbol(NodoArbol nodo, int ronda) { //impresion de un cierto nivel. Se tiene otro metodo de impresion por nivel porque esta se encarga de imprimir el campeon (sin el contadorVs)
         String s = new String();
-        if (n != null) {
+        if (nodo != null) {
 
             if (ronda == 1) {
-                s += n.getJuego().getTituloJuego();
+                s += nodo.getJuego().getTituloJuego();
 
             }
             if (ronda > 1) {
 
-                imprimirNivelCampeon(n.getHijoDer(), ronda - 1);
-                imprimirNivelCampeon(n.getHijoIzq(), ronda - 1);
+                imprimirNivelArbol(nodo.getHijoDer(), ronda - 1);
+                imprimirNivelArbol(nodo.getHijoIzq(), ronda - 1);
             }
         }
         JOptionPane.showMessageDialog(null, s);
@@ -72,7 +72,7 @@ public class Arbol {
         }
     }
 
-    public void acomodarRonda(NodoArbol n) { //ACOMODA SIGUIENTE NIVEL A GANADORES. de esta manera se puede ir imprimiendo un nivel a la vez (como se pide el ejercicio)
+    public void acomodarArbol(NodoArbol n) { //ACOMODA SIGUIENTE NIVEL A GANADORES. de esta manera se puede ir imprimiendo un nivel a la vez (como se pide el ejercicio)
 
         if (n.getHijoDer() != null && n.getHijoIzq() != null) { //revisa si hay hijos 
             if (n.getHijoDer().getJuego().getVecesCompradas() > n.getHijoIzq().getJuego().getVecesCompradas()) { //pone de nombre al hijo con mas goles
@@ -85,17 +85,17 @@ public class Arbol {
                 //EMPATE
                 n.getHijoDer().setJuego(n.getHijoDer().getJuego());
                 contadortmp += 1;
-                // acomodarRonda(n);
+                // acomodarArbol(n);
             }
-            acomodarRonda(n.getHijoDer());
-            acomodarRonda(n.getHijoIzq());
+            acomodarArbol(n.getHijoDer());
+            acomodarArbol(n.getHijoIzq());
         }
 
     }
 
-    public void acomodarTodasRondas() {
-        while (contadortmp < AlturaRec(raiz)) {
-            acomodarRonda(raiz);
+    public void acomodarTodoArbol() {
+        while (contadortmp < 5) {
+            acomodarArbol(raiz);
             contadortmp += 1;
         }
     }
