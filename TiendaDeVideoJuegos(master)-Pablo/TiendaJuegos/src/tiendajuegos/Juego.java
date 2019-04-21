@@ -17,6 +17,7 @@ public class Juego {
  private int idJuego;
  private int cantidadJuego;
  private int precioJuego; 
+ private int vecesCompradas;
 // <editor-fold desc="Constructor, getter and setter"> 
 
 
@@ -89,11 +90,17 @@ public class Juego {
 
     @Override
     public String toString() {
-        return "**********************************************************************\n"+"Titulo: " + tituloJuego+"\n" + " Desarollador: " + desarolladorJuego + "\n"+" Genero: " + generoJuego + "\n"+ " Desc. Breve: " + descripcionJuego + "\n"+ " Cantidad que quedan: " + cantidadJuego + "\n"+"ID de juego: "+ idJuego + "\n" + " Precio: " + precioJuego + "\n";
+        return "**********************************************************************\n"+"Titulo: " + tituloJuego+"\n" + " Desarollador: " + desarolladorJuego + "\n"+" Genero: " + generoJuego + "\n"+ " Desc. Breve: " + descripcionJuego + "\n"+ " Cantidad que quedan: " + cantidadJuego + "\n"+"ID de juego: "+ idJuego + "\n" + " Precio: " + precioJuego + "\n"+ "\nVeces compradas: "+ vecesCompradas+"\n";
     }
    
     public String toStringCobro() {
         return "**********************************************************************\n"+"Titulo: " + tituloJuego+"  Precio: " + precioJuego + "\n";
     }
- 
+ public int getVecesCompradas() {
+        return vecesCompradas;
+    }
+
+    public void setVecesCompradas(int vecesCompradas) {
+        this.vecesCompradas = vecesCompradas;
+    }
 }

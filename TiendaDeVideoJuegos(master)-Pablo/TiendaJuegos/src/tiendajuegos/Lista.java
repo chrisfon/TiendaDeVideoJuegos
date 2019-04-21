@@ -4,14 +4,16 @@
  * and open the template in the editor.
  */
 package tiendajuegos;
+
 import javax.swing.JOptionPane;
+
 /**
  *
  * @author PJ129
  */
 
 public class Lista {
-    
+
     private Usuario usuario;
     private NodoLista cabeza;
     private NodoLista ultimo;
@@ -23,7 +25,7 @@ public class Lista {
             ultimo.setNext(cabeza);
             cabeza.setBack(ultimo);
 
-        } else if (a.getIdAparato()< cabeza.getAparato().getIdAparato()) {
+        } else if (a.getIdAparato() < cabeza.getAparato().getIdAparato()) {
             NodoLista aux = new NodoLista(a);
             aux.setNext(cabeza);
             cabeza.setBack(aux);
@@ -51,7 +53,7 @@ public class Lista {
             temp.getNext().setBack(temp);
         }
     }
-    
+
     public void insertarCombo(Combos c) {
         if (cabeza == null) {
             cabeza = new NodoLista(c);
@@ -59,7 +61,7 @@ public class Lista {
             ultimo.setNext(cabeza);
             cabeza.setBack(ultimo);
 
-        } else if (c.getIdCombo()< cabeza.getCombos().getIdCombo()) {
+        } else if (c.getIdCombo() < cabeza.getCombos().getIdCombo()) {
             NodoLista aux = new NodoLista(c);
             aux.setNext(cabeza);
             cabeza.setBack(aux);
@@ -87,7 +89,7 @@ public class Lista {
             temp.getNext().setBack(temp);
         }
     }
-    
+
     public void insertarJuego(Juego j) {
         if (cabeza == null) {
             cabeza = new NodoLista(j);
@@ -123,135 +125,124 @@ public class Lista {
             temp.getNext().setBack(temp);
         }
     }
-    
-    
-   public Juego extrae(int id){
-       Juego p=null;
-      if (cabeza!=null) {
-            if (id>=cabeza.getDatoJuego().getIdJuego() && id<=ultimo.getDatoJuego().getIdJuego()) {
-                if (cabeza.getDatoJuego().getIdJuego()==id) {
-                    if (cabeza.getDatoJuego().getCantidadJuego()>0){
-                     cabeza.getDatoJuego().setCantidadJuego(cabeza.getDatoJuego().getCantidadJuego() - 1);
-                    p=cabeza.getDatoJuego();   
+
+    public Juego extrae(int id) {
+        Juego p = null;
+        if (cabeza != null) {
+            if (id >= cabeza.getDatoJuego().getIdJuego() && id <= ultimo.getDatoJuego().getIdJuego()) {
+                if (cabeza.getDatoJuego().getIdJuego() == id) {
+                    if (cabeza.getDatoJuego().getCantidadJuego() > 0) {
+                        cabeza.getDatoJuego().setCantidadJuego(cabeza.getDatoJuego().getCantidadJuego() - 1);
+                        cabeza.getDatoJuego().setVecesCompradas(cabeza.getDatoJuego().getVecesCompradas() + 1);
+                        p = cabeza.getDatoJuego();
                     }
-                    
-                }else{
-                     NodoLista aux=cabeza.getNext();               
-                while(aux!=cabeza){                
-               if (aux.getDatoJuego().getIdJuego()==id) {
-                   if (aux.getDatoJuego().getCantidadJuego()>0){
-                     aux.getDatoJuego().setCantidadJuego(aux.getDatoJuego().getCantidadJuego() - 1);
-                    p=aux.getDatoJuego();   
-                    }else{
-                    
-                       JOptionPane.showMessageDialog(null,"El juego se encuentra agotado!");
-                    
-                    } 
-                    
-                    
-                 
-                
-                }
-                    aux=aux.getNext();               
-                } 
-                
-                    
-                }               
-               
-            }
-            
-        }
-     
-    return p;
-   }
-       
-   public Aparato extraeAparato(int id){
-       Aparato p=null;
-      if (cabeza!=null) {
-            if (id>=cabeza.getAparato().getIdAparato() && id<=ultimo.getAparato().getIdAparato()) {
-                if (cabeza.getAparato().getIdAparato()==id) {
-                    if (cabeza.getAparato().getCantidadDisponible()>0){
-                     cabeza.getAparato().setCantidadDisponible(cabeza.getAparato().getCantidadDisponible() - 1);
-                    p=cabeza.getAparato();   
+
+                } else {
+                    NodoLista aux = cabeza.getNext();
+                    while (aux != cabeza) {
+
+                        if (aux.getDatoJuego().getIdJuego() == id) {
+                            if (aux.getDatoJuego().getCantidadJuego() > 0) {
+                                aux.getDatoJuego().setCantidadJuego(aux.getDatoJuego().getCantidadJuego() - 1);
+                                aux.getDatoJuego().setVecesCompradas(aux.getDatoJuego().getVecesCompradas() + 1);
+                                p = aux.getDatoJuego();
+                            } else {
+
+                                JOptionPane.showMessageDialog(null, "El juego se encuentra agotado!");
+
+                            }
+
+                        }
+                        aux = aux.getNext();
                     }
-                    
-                }else{
-                     NodoLista aux=cabeza.getNext();               
-                while(aux!=cabeza){                
-               if (aux.getAparato().getIdAparato()==id) {
-                   if (aux.getAparato().getCantidadDisponible()>0){
-                     aux.getAparato().setCantidadDisponible(aux.getAparato().getCantidadDisponible() - 1);
-                    p=aux.getAparato();   
-                    }else{
-                    
-                       JOptionPane.showMessageDialog(null,"El aparato se encuentra agotado!");
-                    
-                    } 
-                    
-                    
-                 
-                
+
                 }
-                    aux=aux.getNext();               
-                } 
-                
-                    
-                }               
-               
+
             }
-            
+
         }
-     
-    return p;
-   }
-   
-       
-   public Combos extraeCombos(int id){
-       Combos p=null;
-      if (cabeza!=null) {
-            if (id>=cabeza.getCombos().getIdCombo() && id<=ultimo.getCombos().getIdCombo()) {
-                if (cabeza.getCombos().getIdCombo()==id) {
-                    if (cabeza.getCombos().getCantidadDisponible()>0){
-                     cabeza.getCombos().setCantidadDisponible(cabeza.getCombos().getCantidadDisponible() - 1);
-                    p=cabeza.getCombos();   
+
+        return p;
+    }
+
+    public Aparato extraeAparato(int id) {
+        Aparato p = null;
+        if (cabeza != null) {
+            if (id >= cabeza.getAparato().getIdAparato() && id <= ultimo.getAparato().getIdAparato()) {
+                if (cabeza.getAparato().getIdAparato() == id) {
+                    if (cabeza.getAparato().getCantidadDisponible() > 0) {
+                        cabeza.getAparato().setCantidadDisponible(cabeza.getAparato().getCantidadDisponible() - 1);
+                        p = cabeza.getAparato();
                     }
-                    
-                }else{
-                     NodoLista aux=cabeza.getNext();               
-                while(aux!=cabeza){                
-               if (aux.getCombos().getIdCombo()==id) {
-                   if (aux.getCombos().getCantidadDisponible()>0){
-                     aux.getCombos().setCantidadDisponible(aux.getCombos().getCantidadDisponible() - 1);
-                    p=aux.getCombos();   
-                    }else{
-                    
-                       JOptionPane.showMessageDialog(null,"El combo se encuentra agotado!");
-                    
-                    } 
-                    
-                    
-                 
-                
+
+                } else {
+                    NodoLista aux = cabeza.getNext();
+                    while (aux != cabeza) {
+                        if (aux.getAparato().getIdAparato() == id) {
+                            if (aux.getAparato().getCantidadDisponible() > 0) {
+                                aux.getAparato().setCantidadDisponible(aux.getAparato().getCantidadDisponible() - 1);
+                                p = aux.getAparato();
+                            } else {
+
+                                JOptionPane.showMessageDialog(null, "El aparato se encuentra agotado!");
+
+                            }
+
+                        }
+                        aux = aux.getNext();
+                    }
+
                 }
-                    aux=aux.getNext();               
-                } 
-                
-                    
-                }               
-               
+
             }
-            
+
         }
-     
-    return p;
-   }
-    public void insertarUsuario(Usuario u){
+
+        return p;
+    }
+
+    public Combos extraeCombos(int id) {
+        Combos p = null;
+        if (cabeza != null) {
+            if (id >= cabeza.getCombos().getIdCombo() && id <= ultimo.getCombos().getIdCombo()) {
+                if (cabeza.getCombos().getIdCombo() == id) {
+                    if (cabeza.getCombos().getCantidadDisponible() > 0) {
+                        cabeza.getCombos().setCantidadDisponible(cabeza.getCombos().getCantidadDisponible() - 1);
+                        p = cabeza.getCombos();
+                    }
+
+                } else {
+                    NodoLista aux = cabeza.getNext();
+                    while (aux != cabeza) {
+                        if (aux.getCombos().getIdCombo() == id) {
+                            if (aux.getCombos().getCantidadDisponible() > 0) {
+                                aux.getCombos().setCantidadDisponible(aux.getCombos().getCantidadDisponible() - 1);
+                                p = aux.getCombos();
+                            } else {
+
+                                JOptionPane.showMessageDialog(null, "El combo se encuentra agotado!");
+
+                            }
+
+                        }
+                        aux = aux.getNext();
+                    }
+
+                }
+
+            }
+
+        }
+
+        return p;
+    }
+
+    public void insertarUsuario(Usuario u) {
         if (cabeza == null) {
             cabeza = new NodoLista(u);
             ultimo = cabeza;
             ultimo.setNext(cabeza);
             cabeza.setBack(ultimo);
-            
 
         } else if (u.getUsuarioID() < cabeza.getDatoUsuario().getUsuarioID()) {
             NodoLista aux = new NodoLista(u);
@@ -261,7 +252,7 @@ public class Lista {
             ultimo.setNext(cabeza);
             cabeza.setBack(ultimo);
 
-        } else if (ultimo.getDatoUsuario().getUsuarioID()<= u.getUsuarioID()) {
+        } else if (ultimo.getDatoUsuario().getUsuarioID() <= u.getUsuarioID()) {
             NodoLista aux = new NodoLista(u);
             aux.setBack(ultimo);
             ultimo.setNext(aux);
@@ -281,30 +272,30 @@ public class Lista {
             temp.getNext().setBack(temp);
         }
     }
-    
-    public Usuario buscarUsuario (String nombreUsuario, String contrasenaUsuario){
-       Usuario usuario = null;
-       NodoLista aux= cabeza;
-       boolean encontrado = false;
-        if (cabeza!=null) {
-             if (aux.getDatoUsuario().getNombreUsuario().equals(nombreUsuario) && aux.getDatoUsuario().getContraseñaUsuario().equals(contrasenaUsuario)){
+
+    public Usuario buscarUsuario(String nombreUsuario, String contrasenaUsuario) {
+        Usuario usuario = null;
+        NodoLista aux = cabeza;
+        boolean encontrado = false;
+        if (cabeza != null) {
+            if (aux.getDatoUsuario().getNombreUsuario().equals(nombreUsuario) && aux.getDatoUsuario().getContraseñaUsuario().equals(contrasenaUsuario)) {
                 usuario = aux.getDatoUsuario();
                 return usuario;
-             }
-             aux = aux.getNext();
-            while(aux != cabeza && !encontrado){
-             if (aux.getDatoUsuario().getNombreUsuario().equals(nombreUsuario) && aux.getDatoUsuario().getContraseñaUsuario().equals(contrasenaUsuario)){
-                usuario = aux.getDatoUsuario();
-                encontrado = true;
-            }else{
-                 usuario = null;
-                 
-            }  
-             
-             aux = aux.getNext();
             }
-            
-                    }
+            aux = aux.getNext();
+            while (aux != cabeza && !encontrado) {
+                if (aux.getDatoUsuario().getNombreUsuario().equals(nombreUsuario) && aux.getDatoUsuario().getContraseñaUsuario().equals(contrasenaUsuario)) {
+                    usuario = aux.getDatoUsuario();
+                    encontrado = true;
+                } else {
+                    usuario = null;
+
+                }
+
+                aux = aux.getNext();
+            }
+
+        }
         if (encontrado) {
             return usuario;
         } else {
@@ -321,7 +312,6 @@ public class Lista {
         this.usuario = usuario;
     }
 
-    
     public String toStringJuego() {
         String s = "";
         NodoLista aux = cabeza;
@@ -335,13 +325,12 @@ public class Lista {
         }
         return s;
     }
-    
-    
+
     public String toStringAparato() {
         String s = "";
         NodoLista aux = cabeza;
         if (cabeza != null) {
-            s += aux.toStringAparato()+ ",";
+            s += aux.toStringAparato() + ",";
             aux = aux.getNext();
             while (aux != cabeza) {
                 s += aux.toStringAparato() + ",";
@@ -350,12 +339,12 @@ public class Lista {
         }
         return s;
     }
-    
+
     public String toStringCombo() {
         String s = "";
         NodoLista aux = cabeza;
         if (cabeza != null) {
-            s += aux.toStringCombo()+ ",";
+            s += aux.toStringCombo() + ",";
             aux = aux.getNext();
             while (aux != cabeza) {
                 s += aux.toStringCombo() + ",";
@@ -379,22 +368,19 @@ public class Lista {
 
                 } else {
                     NodoLista aux = cabeza.getNext();
-                    
+
                     while (aux != cabeza) {
-                       if (aux.getDatoJuego().getIdJuego() == id) {
-                        if (aux.getDatoJuego().getCantidadJuego() > 0) {
+                        if (aux.getDatoJuego().getIdJuego() == id) {
+                            if (aux.getDatoJuego().getCantidadJuego() > 0) {
 
-                            p = aux.getDatoJuego();
-                        } else {
-                            JOptionPane.showMessageDialog(null, "El juego se encuentra agotado!");
+                                p = aux.getDatoJuego();
+                            } else {
+                                JOptionPane.showMessageDialog(null, "El juego se encuentra agotado!");
+                            }
+
                         }
-
-                        
-
+                        aux = aux.getNext();
                     }
-                       aux = aux.getNext();
-                    }
-                    
 
                 }
 
