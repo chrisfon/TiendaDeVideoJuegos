@@ -257,7 +257,7 @@ catch(Exception e){
                         menuUsuario();
                     } else {
                         if (listaAparato.extraeSinRestaAparato(option1).getCantidadDisponible() > 0) {
-                            carrito.push(new NodoPila(listaAparato.extrae(option1)));
+                            carrito.push(new NodoPila(listaAparato.extraeAparato(option1)));
                             menuCompra();
                         } else {
 
@@ -275,7 +275,7 @@ catch(Exception e){
                         menuUsuario();
                     } else {
                         if (listaCombos.extraeSinRestaCombo(option2).getCantidadDisponible() > 0) {
-                            carrito.push(new NodoPila(listaCombos.extrae(option2)));
+                            carrito.push(new NodoPila(listaCombos.extraeCombos(option2)));
                             menuCompra();
                         } else {
 

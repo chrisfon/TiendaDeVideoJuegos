@@ -164,6 +164,87 @@ public class Lista {
      
     return p;
    }
+       
+   public Aparato extraeAparato(int id){
+       Aparato p=null;
+      if (cabeza!=null) {
+            if (id>=cabeza.getAparato().getIdAparato() && id<=ultimo.getAparato().getIdAparato()) {
+                if (cabeza.getAparato().getIdAparato()==id) {
+                    if (cabeza.getAparato().getCantidadDisponible()>0){
+                     cabeza.getAparato().setCantidadDisponible(cabeza.getAparato().getCantidadDisponible() - 1);
+                    p=cabeza.getAparato();   
+                    }
+                    
+                }else{
+                     NodoLista aux=cabeza.getNext();               
+                while(aux!=cabeza){                
+               if (aux.getAparato().getIdAparato()==id) {
+                   if (aux.getAparato().getCantidadDisponible()>0){
+                     aux.getAparato().setCantidadDisponible(aux.getAparato().getCantidadDisponible() - 1);
+                    p=aux.getAparato();   
+                    }else{
+                    
+                       JOptionPane.showMessageDialog(null,"El aparato se encuentra agotado!");
+                    
+                    } 
+                    
+                    
+                 
+                
+                }
+                    aux=aux.getNext();               
+                } 
+                
+                    
+                }               
+               
+            }
+            
+        }
+     
+    return p;
+   }
+   
+       
+   public Combos extraeCombos(int id){
+       Combos p=null;
+      if (cabeza!=null) {
+            if (id>=cabeza.getCombos().getIdCombo() && id<=ultimo.getCombos().getIdCombo()) {
+                if (cabeza.getCombos().getIdCombo()==id) {
+                    if (cabeza.getCombos().getCantidadDisponible()>0){
+                     cabeza.getCombos().setCantidadDisponible(cabeza.getCombos().getCantidadDisponible() - 1);
+                    p=cabeza.getCombos();   
+                    }
+                    
+                }else{
+                     NodoLista aux=cabeza.getNext();               
+                while(aux!=cabeza){                
+               if (aux.getCombos().getIdCombo()==id) {
+                   if (aux.getCombos().getCantidadDisponible()>0){
+                     aux.getCombos().setCantidadDisponible(aux.getCombos().getCantidadDisponible() - 1);
+                    p=aux.getCombos();   
+                    }else{
+                    
+                       JOptionPane.showMessageDialog(null,"El combo se encuentra agotado!");
+                    
+                    } 
+                    
+                    
+                 
+                
+                }
+                    aux=aux.getNext();               
+                } 
+                
+                    
+                }               
+               
+            }
+            
+        }
+     
+    return p;
+   }
     public void insertarUsuario(Usuario u){
         if (cabeza == null) {
             cabeza = new NodoLista(u);
