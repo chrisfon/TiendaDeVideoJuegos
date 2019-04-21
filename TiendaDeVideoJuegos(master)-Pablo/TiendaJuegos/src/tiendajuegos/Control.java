@@ -251,7 +251,7 @@ catch(Exception e){
                         if (listaJuego.extraeSinRestaJuego(option).getCantidadJuego() > 0) {
                             carrito.push(new NodoPila(listaJuego.extrae(option)));
                              JOptionPane.showMessageDialog(null, "El juego se ha agregado!");
-                            menuCompra();
+                            menuUsuario();
                         } else {
 
                             JOptionPane.showMessageDialog(null, "El juego se encuentra agotado!");
