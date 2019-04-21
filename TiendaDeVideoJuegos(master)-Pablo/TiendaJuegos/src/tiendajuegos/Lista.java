@@ -490,4 +490,34 @@ public class Lista {
 
         return a;
     }
+
+    public NodoLista getCabeza() {
+        return cabeza;
+    }
+
+    public void setCabeza(NodoLista cabeza) {
+        this.cabeza = cabeza;
+    }
+ 
+ public String buscarGenero(String tmp){
+     String s = new String();
+     NodoLista aux = cabeza;
+     
+     if (cabeza != null) {
+         
+            if (tmp.equals(aux.getDatoJuego().getGeneroJuego() )){
+                s += aux.getDatoJuego().getTituloJuego() + "\n";
+            }
+            aux = aux.getNext();
+            while (aux != cabeza) {
+              if (tmp.equals(aux.getDatoJuego().getGeneroJuego() )){
+                s += aux.getDatoJuego().getTituloJuego() + "\n";
+                }   
+               
+                aux = aux.getNext();
+            }
+        }
+     
+     return s;
+ }
 }

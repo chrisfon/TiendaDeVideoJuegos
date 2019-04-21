@@ -115,8 +115,9 @@ public void menuUsuario(){
 
  int option = Integer.parseInt(JOptionPane.showInputDialog("\n1. Ver productos\n"
          + "2. Ver carrito\n"
-         + "3. Buscar juego (sort)\n"
+         + "3. Ver Juegos mas populares\n"
          + "4. Finalizar Orden\n"
+         + "5. Buscar por genero\n"
          + "0.Salir\n"));
  try{
  
@@ -139,7 +140,7 @@ public void menuUsuario(){
       a.acomodarRonda(a.getRaiz());
       a.acomodarRonda(a.getRaiz());
       a.acomodarRonda(a.getRaiz());
-      a.imprimirNivelCampeon(a.getRaiz(), 1);
+      a.imprimirNivelCampeon(a.getRaiz(), 2);
       menuUsuario(); 
      case 4:
          orden.encola(new NodoCola(contadorOrdenid,new Orden (carrito,this.contadorOrdenid),listaUsuario.getUsuario().getNombreUsuario()));
@@ -150,7 +151,20 @@ public void menuUsuario(){
          menuUsuario();
          break;
      //llevar usuario a area de pago       //llevar usuario a area de pago       //llevar usuario a area de pago       //llevar usuario a area de pago  
-     
+     case 5:
+       int optionTMP = Integer.parseInt(JOptionPane.showInputDialog("Que genero desea buscar? 1. Accion 2. Aventura 3.Shooter"));  
+       if (optionTMP == 1){
+       
+       JOptionPane.showMessageDialog(null, listaJuego.buscarGenero("Accion")); 
+       }else if(optionTMP == 2){
+         
+       JOptionPane.showMessageDialog(null, listaJuego.buscarGenero("Aventura")); 
+       }else if(optionTMP == 3){
+        
+       JOptionPane.showMessageDialog(null, listaJuego.buscarGenero("Shooter")); 
+       }else{
+       JOptionPane.showMessageDialog(null, "No existe ese genero ");   
+       }
      default:
                 System.out.print("Esa opcion no existe\n");
                 menuUsuario();
@@ -225,8 +239,8 @@ catch(Exception e){
 
  public void llenarListasPRUEBA(){
    listaJuego.insertarJuego(new Juego("MEJOR TITULO 1", "MEJOR DESAROLLADOR 1", "Accion", "MEJOR DESCRIPCION", 1, 5, 100));
-        listaJuego.insertarJuego(new Juego("El mejor juego x2 Electric Boogaloo", "Desarollador 2", "Estrategia", "Un juegaso 12/10", 2, 7, 2000));
-         listaJuego.insertarJuego(new Juego("El mejor juego x3", "Desarollador 2", "Estrategia", "Un juegaso 12/10", 3, 7, 2000));
+        listaJuego.insertarJuego(new Juego("El mejor juego x2 Electric Boogaloo", "Desarollador 2", "Aventura", "Un juegaso 12/10", 2, 7, 2000));
+         listaJuego.insertarJuego(new Juego("El mejor juego x3", "Desarollador 2", "Shooter", "Un juegaso 12/10", 3, 7, 2000));
         listaAparato.insertarAparato(new Aparato("Audifonos", 2000, 50));
         listaAparato.insertarAparato(new Aparato("Mouse Gamer", 1500, 25));
         listaCombos.insertarCombo(new Combos("Call of duty", "Audifonos", 2450, 10, 1));
